@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
   },
   touch: {
     justifyContent: "center",
-    alignItems: "center",
     flexDirection: "row",
     display: "flex",
     marginBottom: 10,

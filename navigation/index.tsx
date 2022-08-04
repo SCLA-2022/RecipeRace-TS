@@ -13,6 +13,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
+import UserWalletScreen from "../components/Wallet/UserWalletScreen";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -58,6 +59,13 @@ export default function Navigation({
           name="Profile"
           component={AllProfileStack}
         />
+        <Tabs.Screen
+          // options={{ headerShown: false, tabBarIcon: ({size, color}) => (<Icon icon="emojione:cooking" inline={true} />) }} // hides 'Home' header
+
+          name="Wallet"
+          component={UserWalletScreen}
+        />
+        
       </Tabs.Navigator>
     </NavigationContainer>
   );
