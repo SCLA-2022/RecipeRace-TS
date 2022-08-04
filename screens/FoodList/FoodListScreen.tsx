@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native'
 // import { FlatList } from 'react-native-web'
 
-const FoodListScreen = ({navigation, route}) => {
+const FoodListScreen = ({navigation, route}: {navigation:any, route:any}) => {
 
 
   return (

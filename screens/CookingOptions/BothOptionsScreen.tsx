@@ -1,11 +1,11 @@
 import React from "react";
 import { Text, Button, View, StyleSheet, TouchableOpacity } from "react-native";
 
-import VideoCard from "../../Cards/VideoCard";
+import VideoCard from "../../components/Cards/VideoCard";
 import RecipeTextScreen from "./RecipeTextScreen";
 
-const BothOptionsScreen = ({ route, navigation }) => {
-  const handleDifficultyPress = (name, items) => {
+const BothOptionsScreen = ({ route, navigation }:  {navigation:any, route:any}) => {
+  const handleDifficultyPress = () => {
     // console.log("tap", name),
     /* 
     used to navigate throughout different categories of furniture
@@ -20,7 +20,6 @@ const BothOptionsScreen = ({ route, navigation }) => {
       <RecipeTextScreen route={route} />
 
       <TouchableOpacity
-        color="#5BBEB3"
         style={styles.touch}
         onPress={handleDifficultyPress}
       >
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     elevation: 1,
     justifyContent: "center",
-    alignItems: "center",
     flexDirection: "row",
     display: "flex",
     backgroundColor: "#5BBEB3",

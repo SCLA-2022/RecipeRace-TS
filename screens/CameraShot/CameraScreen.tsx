@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import { Camera } from "expo-camera";
+import { Camera, CameraCapturedPicture } from "expo-camera";
 import { shareAsync } from "expo-sharing";
 import * as MediaLibrary from "expo-media-library";
 import axios from "axios";
@@ -18,9 +18,15 @@ import axios from "axios";
 import { useIsFocused } from "@react-navigation/native";
 
 //include all data //
-export default function CameraScreen({ route, navigation }) {
+export default function CameraScreen({
+  route,
+  navigation,
+}: {
+  navigation: any;
+  route: any;
+}) {
   // useRef() <- does not cause the page to keep refreshing
-  let cameraRef = useRef();
+  let cameraRef = useRef<Camera>(null);
 
   // const [photo, setPhoto] = useState({
   //     photo: null,
@@ -30,13 +36,15 @@ export default function CameraScreen({ route, navigation }) {
   const isFocused = useIsFocused();
 
   // pass new data to these variables -> then update value
-  const [hasCameraPermission, setHasCameraPermission] = useState();
-  const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
-  const [photo, setPhoto] = useState();
+  const [hasCameraPermission, setHasCameraPermission] =
+    useState<boolean>(false);
+  const [hasMediaLibraryPermission, setHasMediaLibraryPermission] =
+    useState<boolean>(false);
+  const [photo, setPhoto] = useState<CameraCapturedPicture>();
   const [showCamera, setShowCamera] = useState();
 
-  const [photoUri, setPhotoUri] = useState();
-  const [hasPhoto, setHasPhoto] = useState();
+  const [photoUri, setPhotoUri] = useState<string>();
+  const [hasPhoto, setHasPhoto] = useState<boolean>();
 
   // need help on understanding asynchronous function and await
   // happens after every render
@@ -61,63 +69,79 @@ export default function CameraScreen({ route, navigation }) {
   // simulating a POSTMAN API into your server
   const upload = async () => {
     try {
-      let localUri = photo.uri;
-      let filename = localUri.split("/").pop();
+      // check if photo exists first
+      if (photo) {
+        //  get image file path
+        let localUri = photo.uri;
+        // get the image name
+        let filename = `${localUri.split("/").pop()}`;
 
-      let match = /\.(\w+)$/.exec(filename);
-      let type = match ? `image/${match[1]}` : `image`;
+        // find the stright has the file name
+        let match = /\.(\w+)$/.exec(filename);
+        // extract the file typer
+        let type = match ? `image/${match[1]}` : `image`;
 
-      let formData = new FormData();
-      formData.append("file", { uri: localUri, name: filename, type });
+        // create form to upload - keep in mind form is empty
+        let formData = new FormData();
+        // fill in form data
+        // @ts-ignore
+        formData.append("file", { uri: localUri, name: filename, type });
 
-      const response = await fetch("https://reciperace.herokuapp.com/upload", {
-        method: "POST",
-        body: formData,
-        header: {
-          "content-type": "multipart/form-data",
-        },
-      });
+        // construct payload to upload image data
+        const payload: RequestInit = {
+          method: "POST",
+          body: formData,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        };
 
-      // grab data as object
-      const labels = await response.json();
+        const response = await fetch("https://reciperace.herokuapp.com/upload", payload);
 
-      // CHECKING if the "food" is in the image
-      var strs = labels.data;
+        // grab data as object
+        const labels = await response.json();
 
-      // a picture will be invalid be default
-      let isValid = false;
+        // CHECKING if the "food" is in the image
+        var strs = labels.data;
 
+        // a picture will be invalid be default
+        let isValid = false;
 
-      // total amount of labels
-      let b = route.params.labels.length;
-      // number of times we had match
-      let a = 0;
+        // total amount of labels
+        let b = route.params.labels.length;
+        // number of times we had match
+        let a = 0;
 
-      // loop through labels
-      for (let i = 0; i < route.params.labels.length; i++) {
-        // store label for easy acces
-        let label = route.params.labels[i];
+        // loop through labels
+        for (let i = 0; i < route.params.labels.length; i++) {
+          // store label for easy acces
+          let label = route.params.labels[i];
 
-        // loop through server results
-        for (let j = 0; j < strs.length; j++) {
-          if (label.toLowerCase() === strs[j].toLowerCase()) {
-            console.log(`Label: ${label} MATCH Str: ${strs[j]}`);
-            a++; // increment number by 1
-          } else {
-            console.log(`Label: ${label} DID NOT MATCH Str: ${strs[j]}`);
+          // loop through server results
+          for (let j = 0; j < strs.length; j++) {
+            if (label.toLowerCase() === strs[j].toLowerCase()) {
+              console.log(`Label: ${label} MATCH Str: ${strs[j]}`);
+              a++; // increment number by 1
+            } else {
+              console.log(`Label: ${label} DID NOT MATCH Str: ${strs[j]}`);
+            }
           }
         }
-      }
 
-      // GET PERCENT
-      const percent = (a/b) * 100;
+        // GET PERCENT
+        const percent = (a / b) * 100;
 
-      // it has to be more than 70 for valid
-      if(percent >= 70){
-        isValid = true;
-        console.log(`the image was ${isValid} (${a} / ${b} ) - we had  ${a} matches`);
-      }else{
-        console.log(`the image was ${isValid}  (${a} / ${b} )  - we had  ${a} matches`);
+        // it has to be more than 70 for valid
+        if (percent >= 70) {
+          isValid = true;
+          console.log(
+            `the image was ${isValid} (${a} / ${b} ) - we had  ${a} matches`
+          );
+        } else {
+          console.log(
+            `the image was ${isValid}  (${a} / ${b} )  - we had  ${a} matches`
+          );
+        }
       }
     } catch (e) {
       console.log(e);
@@ -142,17 +166,18 @@ export default function CameraScreen({ route, navigation }) {
       base64: true,
       exif: false,
     };
-    // wait until picture is taken, then create a "new photo file"
-    let newPhoto = await cameraRef.current.takePictureAsync(options);
 
-    console.log(newPhoto.uri)
-    setPhoto(newPhoto);
+    if (cameraRef && cameraRef.current) {
+      // wait until picture is taken, then create a "new photo file"
+      let newPhoto = await cameraRef.current.takePictureAsync(options);
+      console.log(newPhoto.uri);
+      setPhoto(newPhoto);
+    }
   };
 
   // if the photo is taken, choose any of these options
 
   if (photo) {
-  
     let sharePic = () => {
       shareAsync(photo.uri).then(() => {
         setPhoto(undefined);
@@ -177,13 +202,15 @@ export default function CameraScreen({ route, navigation }) {
     // show the user the button to transfer the photo
     return (
       <SafeAreaView style={styles.container}>
-        <Image style={{width: 400, height: 500, marginBottom: 10}} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
+        <Image
+          style={{ width: 400, height: 500, marginBottom: 10 }}
+          source={{ uri: "data:image/jpg;base64," + photo.base64 }}
+        />
 
-        
         {/* <Button title="Share" onPress={sharePic} /> */}
 
         {hasMediaLibraryPermission ? (
-          <Button title="Save" onPress={savePhoto}  />
+          <Button title="Save" onPress={savePhoto} />
         ) : undefined}
 
         <Button title="Discard" onPress={() => setPhoto(undefined)} />

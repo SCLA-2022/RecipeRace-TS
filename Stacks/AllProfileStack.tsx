@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import UploadProfilePictureScreen from "../Screens/Profile/UploadProfilePictureScreen";
+import UploadProfilePictureScreen from "../screens/Profile/UploadProfilePictureScreen";
 
 const AllProfileStack = () => {
   return (
     <View>
       <View style={styles.alignThem}>
-        <UploadProfilePictureScreen style={styles.alignThem} />
+        <UploadProfilePictureScreen />
       </View>
 
       {/* <View

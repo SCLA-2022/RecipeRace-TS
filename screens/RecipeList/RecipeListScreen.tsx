@@ -2,9 +2,13 @@ import React from "react";
 
 import { Text, FlatList, View, Button, TouchableOpacity } from "react-native";
 
-const RecipeListScreen = ({ navigation, route }) => {
-
-
+const RecipeListScreen = ({
+  navigation,
+  route,
+}: {
+  route: any;
+  navigation: any;
+}) => {
   return (
     <>
       {/* The recipe list to prepare cooking  */}
@@ -26,7 +30,7 @@ const RecipeListScreen = ({ navigation, route }) => {
       </Text>
 
       <FlatList
-        style={{ alignContent: "center", textAlign: "center" }}
+        style={{ alignContent: "center" }}
         // Route.params.ingredients is going to the child of the route onto it reaches ingredients
         data={route.params.ingredients}
         renderItem={({ item }) => (
@@ -47,7 +51,7 @@ const RecipeListScreen = ({ navigation, route }) => {
       />
       <Text style={{ textAlign: "center", fontSize: 25 }}>Equipment</Text>
       <FlatList
-        style={{ alignContent: "center", textAlign: "center" }}
+        style={{ alignContent: "center" }}
         // Route.params.ingredients is going to the child of the route onto it reaches ingredients
         data={route.params.equipment}
         renderItem={({ item }) => (
@@ -75,7 +79,7 @@ const RecipeListScreen = ({ navigation, route }) => {
             borderRadius: 15,
             elevation: 1,
             justifyContent: "center",
-            alignItems: "center",
+
             flexDirection: "row",
             display: "flex",
             backgroundColor: "#5BBEB3",

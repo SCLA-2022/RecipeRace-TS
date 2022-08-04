@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import CookingOptionsCard from "../../Cards/CookingOptionsCard";
+import CookingOptionsCard from "../../components/Cards/CookingOptionsCard";
 
-const CookingOptionsScreen = ({ navigation, route }) => {
+const CookingOptionsScreen = ({ navigation, route }: {navigation:any, route:any}) => {
   // this screen includes all stack navigation buttons
   // this is the first screen a user sees
 

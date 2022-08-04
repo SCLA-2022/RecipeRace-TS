@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Image, View, Platform, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+// TODO: Fix with rob
+
 import * as ImagePicker from 'expo-image-picker';
 
 export default function UploadProfilePictureScreen() {
@@ -9,7 +11,7 @@ export default function UploadProfilePictureScreen() {
       checkForCameraRollPermission()
     }, []);
   
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<null|string>(null);
   
   const  checkForCameraRollPermission=async()=>{
     const { status } = await ImagePicker.getMediaLibraryPermissionsAsync();

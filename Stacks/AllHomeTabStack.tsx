@@ -2,20 +2,18 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import RecipeListScreen from "../Screens/RecipeList/RecipeListScreen";
-import FoodListScreen from "../Screens/FoodList/FoodListScreen";
-import DifficultyScreen from "../Screens/Difficulty/DifficultyScreen";
-import Beginner from "../Screens/Difficulty/Beginner";
-import Intermediate from "../Screens/Difficulty/Intermediate";
-import Advance from "../Screens/Difficulty/Advance";
-import VideoScreen from "../Screens/CookingOptions/VideoScreen";
-import BothOptionsScreen from "../Screens/CookingOptions/BothOptionsScreen";
-import RecipeTextScreen from "../Screens/CookingOptions/RecipeTextScreen";
+import RecipeListScreen from "../screens/RecipeList/RecipeListScreen";
+import FoodListScreen from "../screens/FoodList/FoodListScreen";
+import DifficultyScreen from "../screens/Difficulty/DifficultyScreen";
+import Beginner from "../screens/Difficulty/Beginner";
+import Intermediate from "../screens/Difficulty/Intermediate";
+import Advance from "../screens/Difficulty/Advance";
+import BothOptionsScreen from "../screens/CookingOptions/BothOptionsScreen";
+import RecipeTextScreen from "../screens/CookingOptions/RecipeTextScreen";
 
-import CookingOptionsScreen from "../Screens/CookingOptions/CookingOptionsScreen";
-import VideoCard from "../Cards/VideoCard";
-import CameraScreen from "../Screens/CameraShot/CameraScreen";
-import ChooseLandOption from "../Screens/Pets/ChooseLandOption";
+import CookingOptionsScreen from "../screens/CookingOptions/CookingOptionsScreen";
+import VideoCard from "../components/Cards/VideoCard";
+import CameraScreen from "../screens/CameraShot/CameraScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,13 +24,13 @@ const Stack = createNativeStackNavigator();
 const AllHomeTabStack = () => {
   return (
     // HERE IS ALL THE "STACK TABS" for each part of the HOME TAB //
-    <Stack.Navigator style={{backgroundColor: 'white'}}>
-      <Stack.Screen style={{backgroundColor: 'white'}} name="Difficulty" component={DifficultyScreen}  />
+    <Stack.Navigator >
+      <Stack.Screen  name="Difficulty" component={DifficultyScreen}  />
       <Stack.Screen name="Beginner" component={Beginner} />
       <Stack.Screen name="Intermediate" component={Intermediate} />
       <Stack.Screen name="Advance" component={Advance} />
       <Stack.Screen
-        options={({ route }) => ({ title: route.params.title })}
+        options={({ route }: {route:any}) => ({ title: route.params ? route.params.title: '' })}
         name="FoodList"
         component={FoodListScreen}
       />
@@ -69,11 +67,7 @@ const AllHomeTabStack = () => {
         name="Submit"
         component={CameraScreen}
       />
-      <Stack.Screen
-      // options={({ route }) => ({ title: route.params.title })}
-      name="Choose"
-      component={ChooseLandOption}
-    />
+
 
       
     </Stack.Navigator>

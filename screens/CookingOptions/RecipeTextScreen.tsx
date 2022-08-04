@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, FlatList, View } from "react-native";
 
-const RecipeTextScreen = ({ route, navigation }) => {
+const RecipeTextScreen = ({ route } : {route:any}) => {
   return (
     <>
       <FlatList
