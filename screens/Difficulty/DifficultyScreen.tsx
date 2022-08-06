@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 
-import CircularProgress, { CircularProgressWithChild } from 'react-native-circular-progress-indicator';
-
+import CircularProgress, {
+  CircularProgressWithChild,
+} from "react-native-circular-progress-indicator";
+import { UserInformation, levels } from "../../Data/UserData";
 import DifficultyCard from "../../components/Cards/DifficultyCard";
 
 const DifficultyScreen = ({ navigation }: { navigation: any }) => {
@@ -12,20 +14,21 @@ const DifficultyScreen = ({ navigation }: { navigation: any }) => {
   // this is the first screen a user sees
 
   return (
-    <View style={{ backgroundColor: "white", flex: 1,  }}>
+    <View style={{ backgroundColor: "white", flex: 1 }}>
       <Text style={styles.newText}>Choose Cooking Level</Text>
-      <View style={styles.space}>
-        <DifficultyCard
-          style={styles.buttonstyles}
-          navigation={navigation}
-          titleName="Beginner"
-        />
-        
-        
-      </View>
-      
 
-      <View style={styles.space}>
+      {levels.map((level) => (
+        <View style={styles.space} key={level.label}>
+          <DifficultyCard
+            style={styles.buttonstyles}
+            navigation={navigation}
+            titleName={level.label}
+            xp={level.xp}
+          />
+        </View>
+      ))}
+
+      {/* <View style={styles.space}>
         <DifficultyCard
           style={styles.buttonstyles}
           navigation={navigation}
@@ -38,7 +41,7 @@ const DifficultyScreen = ({ navigation }: { navigation: any }) => {
           navigation={navigation}
           titleName="Advance"
         />
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -47,7 +50,7 @@ export default DifficultyScreen;
 
 const styles = StyleSheet.create({
   newText: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 60,
     marginBottom: -40,
     fontSize: 35,
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     marginVertical: 60,
   },
   space: {
-    height: 173, 
+    height: 173,
     width: 234,
     marginBottom: 40,
     padding: 20,
@@ -68,8 +71,8 @@ const styles = StyleSheet.create({
   textStyle: { fontSize: 8, marginTop: -5 },
 
   progressEdit: {
-    alignSelf: 'center',
+    alignSelf: "center",
     marginTop: -30,
     marginBottom: -70,
-  }
+  },
 });

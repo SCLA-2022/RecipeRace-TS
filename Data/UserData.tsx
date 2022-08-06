@@ -3,10 +3,11 @@
 
 
 export const UserInformation = {
-    
     username: "User1",
     exp: 0,
-    beginnerXp: 64,
+    beginnerXp: 62,
+    intermediate: 21,
+    advanced: 0,
     achievements: [
         {
             
@@ -21,3 +22,18 @@ export const UserInformation = {
     ],
 
 }
+
+export const levels = [
+    {
+        label: 'Beginner',
+        xp: 62,
+    },
+    {
+        label: 'Medium',
+        xp: 100,
+    },
+    {
+        label: 'Advanced',
+        xp: 67,
+    }
+]

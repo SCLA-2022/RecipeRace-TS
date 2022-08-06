@@ -7,8 +7,8 @@ import { UserInformation } from '../../Data/UserData';
 // This is the functionality of the buttons 
 // Difficulty button (function) -> passed to Difficulty.js
 
-const DifficultyCard = (props: any) => {
-    const handleDifficultyPress = () => {
+const BeginnerProgress = (props) => {
+    const handleDifficultyPress = (name, items) => {
         // console.log("tap", name),
         /* 
         used to navigate throughout different categories of furniture
@@ -21,14 +21,14 @@ const DifficultyCard = (props: any) => {
       <View>
             
       
-        <TouchableOpacity style={styles.touch} onPress={handleDifficultyPress} >
-          <Text style={styles.textStyle}>{props.titleName}</Text>
+        <TouchableOpacity color='#FEAD62' style={styles.touch} onPress={handleDifficultyPress} title={props.titleName}>
+          <Text style={styles.textStyle}>Beginner</Text>
           <View style={styles.progressEdit}>
               <CircularProgress 
               clockwise={false}
               progressValueColor='white'
               activeStrokeColor={'white'}
-              value={props.xp} 
+              value={UserInformation.beginnerXp} 
               delay={1000} 
               radius={40}
               />
@@ -40,7 +40,7 @@ const DifficultyCard = (props: any) => {
   )
 }
 
-export default DifficultyCard
+export default BeginnerProgress
 
 const styles = StyleSheet.create({
     textStyle: {
