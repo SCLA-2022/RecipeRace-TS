@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Image, View, Platform, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-// TODO: Fix with rob
+
+// import User(s)
+
+
 
 import * as ImagePicker from 'expo-image-picker';
 

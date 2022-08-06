@@ -1,46 +1,42 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, FlatList } from "react-native";
+
+import { UserInformation } from "../Data/UserData";
 
 import UploadProfilePictureScreen from "../screens/Profile/UploadProfilePictureScreen";
 
+const BADGES = UserInformation.achievements;
+const Badge = ({image} : {image:any}) => (
+  <View >
+    <Image source={image} />
+  </View>
+)
 const AllProfileStack = () => {
-  return (
+
+  // const renderItem = ({image}) => (
+  //   <Badge image={image}/>
+  // )
+
+  return ( 
     <View>
       <View style={styles.alignThem}>
         <UploadProfilePictureScreen />
       </View>
 
-      {/* <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-        }}
-      >
-        <View
-          style={{
-            width: 15,
-            backgroundColor: item.color,
-            // borderRightWidth: 1,
-            borderWidth: 1,
-            height: "100%",
-            borderTopLeftRadius: 20,
-            borderBottomLeftRadius: 20,
-          }}
-        />
-        <Image
-          style={{ height: 50, width: 50, marginLeft: 20, marginTop: 20 }}
-          source={item.image}
-        />
-        <View>
-          <Text style={{ marginLeft: 20, marginTop: 20 }}>
-            {item.firstName}
-          </Text>
-          <Text style={{ marginLeft: 20, marginTop: 0 }}>{item.exp} XP</Text>
-        </View>
-      </View> */}
-
       <View>
         <Text>Achievements</Text>
+      </View>
+      {/* Achievements list */}
+      <View>
+        <FlatList 
+          data={BADGES}
+          renderItem={({item}) => (
+            <View key={item.id}>
+              <Image source={item.image} />
+            </View>
+          )}
+        />
+        
       </View>
     </View>
   );

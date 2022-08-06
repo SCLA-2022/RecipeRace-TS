@@ -14,6 +14,8 @@ import RecipeTextScreen from "../screens/CookingOptions/RecipeTextScreen";
 import CookingOptionsScreen from "../screens/CookingOptions/CookingOptionsScreen";
 import VideoCard from "../components/Cards/VideoCard";
 import CameraScreen from "../screens/CameraShot/CameraScreen";
+import RewardGainedScreen from "../screens/Reward/RewardGainedScreen";
+import AllProfileStack from "./AllProfileStack";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,10 +27,10 @@ const AllHomeTabStack = () => {
   return (
     // HERE IS ALL THE "STACK TABS" for each part of the HOME TAB //
     <Stack.Navigator >
-      <Stack.Screen  name="Difficulty" component={DifficultyScreen}  />
-      <Stack.Screen name="Beginner" component={Beginner} />
-      <Stack.Screen name="Intermediate" component={Intermediate} />
-      <Stack.Screen name="Advance" component={Advance} />
+      <Stack.Screen options={{ headerShown: false }}  name="Difficulty" component={DifficultyScreen}  />
+      <Stack.Screen options={{ headerShown: false }} name="Beginner" component={Beginner} />
+      <Stack.Screen options={{ headerShown: false }} name="Intermediate" component={Intermediate} />
+      <Stack.Screen options={{ headerShown: false }} name="Advance" component={Advance} />
       <Stack.Screen
         options={({ route }: {route:any}) => ({ title: route.params ? route.params.title: '' })}
         name="FoodList"
@@ -67,6 +69,18 @@ const AllHomeTabStack = () => {
         name="Submit"
         component={CameraScreen}
       />
+      <Stack.Screen
+        // options={({ route }) => ({ title: route.params.title })}
+        name="Reward"
+        component={RewardGainedScreen}
+      />
+
+      <Stack.Screen
+        // options={({ route }) => ({ title: route.params.title })}
+        name="Profile"
+        component={AllProfileStack}
+      />
+
 
 
       

@@ -195,7 +195,7 @@ export default function CameraScreen({
         // send photo to server
         upload();
 
-        navigation.navigate("Difficulty");
+        navigation.navigate("Reward");
       });
     };
 

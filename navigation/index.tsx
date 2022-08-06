@@ -42,6 +42,7 @@ export default function Navigation({
     <NavigationContainer>
       <Tabs.Navigator initialRouteName="Home">
         <Tabs.Screen
+          options={{ headerShown: false}}
           // options={{ headerShown: false, tabBarIcon: ({size, color}) => (<Icon icon="emojione:cooking" inline={true} />) }} // hides 'Home' header
 
           name="Leaderboard"
