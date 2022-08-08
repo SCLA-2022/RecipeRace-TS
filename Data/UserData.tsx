@@ -29,11 +29,12 @@ export const levels = [
         xp: 62,
     },
     {
-        label: 'Medium',
+        label: 'Intermediate',
         xp: 100,
     },
     {
         label: 'Advanced',
         xp: 67,
     }
-]
+];
+

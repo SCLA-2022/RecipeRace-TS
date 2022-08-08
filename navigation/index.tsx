@@ -12,7 +12,13 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { ColorSchemeName, Text, StyleSheet } from "react-native";
+
+
+// ICONS IMPORTING LIBRARIES
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 // import UserWalletScreen from "../components/Wallet/UserWalletScreen";
 
 import Colors from "../constants/Colors";
@@ -40,23 +46,23 @@ export default function Navigation({
 }) {
   return (
     <NavigationContainer>
-      <Tabs.Navigator initialRouteName="Home">
+      <Tabs.Navigator initialRouteName="Home"  >
         <Tabs.Screen
-          options={{ headerShown: false}}
-          // options={{ headerShown: false, tabBarIcon: ({size, color}) => (<Icon icon="emojione:cooking" inline={true} />) }} // hides 'Home' header
-
+          options={{ headerShown: false, tabBarIcon: () => <MaterialIcons name="leaderboard" size={24} color="#FEAD62" />}}
           name="Leaderboard"
           component={LeaderboardScreen}
+          
         />
         <Tabs.Screen
-          options={{ headerShown: false }} // hides 'Home' header
+          options={{ headerShown: false, tabBarIcon: () => <MaterialCommunityIcons name="egg-fried" size={24} color="#FEAD62"  /> }} // hides 'Home' header
           name="Home"
           component={AllHomeTabStack}
+          
         />
 
         <Tabs.Screen
-          // options={{ headerShown: false, tabBarIcon: ({size, color}) => (<Icon icon="emojione:cooking" inline={true} />) }} // hides 'Home' header
-
+          
+          options={{ headerShown: false, tabBarIcon: () => <Ionicons name="person-circle-sharp" size={24} color="#FEAD62" /> }}
           name="Profile"
           component={AllProfileStack}
         />
@@ -71,3 +77,39 @@ export default function Navigation({
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  colorTrue: {
+    color: 'red',
+  },
+  colorFalse: {
+    color: 'blue',
+  },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonContainer: {
+    backgroundColor: "#fff",
+
+    justifyContent: "center",
+    marginTop: 500,
+
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    borderWidth: 10,
+  },
+  preview: {
+    alignSelf: "stretch",
+    flex: 1,
+  },
+  buttonStyle: {
+    padding: 40,
+  },
+  buttonTake: {
+    // alignSelf: 'center',
+    // justifyContent: 'center',
+  },
+});

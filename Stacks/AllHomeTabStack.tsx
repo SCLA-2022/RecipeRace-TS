@@ -7,7 +7,7 @@ import FoodListScreen from "../screens/FoodList/FoodListScreen";
 import DifficultyScreen from "../screens/Difficulty/DifficultyScreen";
 import Beginner from "../screens/Difficulty/Beginner";
 import Intermediate from "../screens/Difficulty/Intermediate";
-import Advance from "../screens/Difficulty/Advance";
+import Advance from "../screens/Difficulty/Advanced";
 import BothOptionsScreen from "../screens/CookingOptions/BothOptionsScreen";
 import RecipeTextScreen from "../screens/CookingOptions/RecipeTextScreen";
 

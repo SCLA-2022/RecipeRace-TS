@@ -4,8 +4,8 @@ import { Button, View, StyleSheet, TouchableOpacity, Text } from "react-native";
 // This is the functionality of the buttons
 // Difficulty button (function) -> passed to Difficulty.js
 
-const CookingOptionsCard = (props) => {
-  const handleDifficultyPress = (name, items) => {
+const CookingOptionsCard = (props:any) => {
+  const handleDifficultyPress = () => {
     // console.log("tap", name),
     /* 
         used to navigate throughout different categories of furniture
@@ -25,7 +25,7 @@ const CookingOptionsCard = (props) => {
         <TouchableOpacity
           style={styles.touch}
           onPress={handleDifficultyPress}
-          title={props.optionName}
+
         >
           <Text style={{ color: "white" }}>{props.optionName}</Text>
         </TouchableOpacity>

@@ -14,6 +14,8 @@ import VideoCard from "../../components/Cards/VideoCard";
 // import { View } from 'react-native-web'
 
 const Beginner = ({ navigation }: { navigation: any }) => {
+
+  
   // FoodList IMAGES
 
   // quesadilla
@@ -178,118 +180,118 @@ const Beginner = ({ navigation }: { navigation: any }) => {
         },
       ],
     },
-    {
-      category: "Pasta",
-      image: Food5,
-      recepies: [
-        {
-          name: "Vegan Salad",
-          labels: [],
-          ingredients: [
-            "900g new potatoes",
-            "2 celery sticks",
-            "1 red pepper",
-            "8 spring onions",
-            "8 small pickled gherkins",
-            "4 tbsp capers",
-            "1 lemon",
-            "10g fresh dill",
-            "10g fresh parsley",
-            "10g fresh mint",
-            "10g fresh coriander",
-            "125g egg free mayo",
-            "3/4 tsp salt plus extra",
-          ],
-          equipment: ["Large pan", "Large mixing bowl"],
+    // {
+    //   category: "Pasta",
+    //   image: Food5,
+    //   recepies: [
+    //     {
+    //       name: "Vegan Salad",
+    //       labels: [],
+    //       ingredients: [
+    //         "900g new potatoes",
+    //         "2 celery sticks",
+    //         "1 red pepper",
+    //         "8 spring onions",
+    //         "8 small pickled gherkins",
+    //         "4 tbsp capers",
+    //         "1 lemon",
+    //         "10g fresh dill",
+    //         "10g fresh parsley",
+    //         "10g fresh mint",
+    //         "10g fresh coriander",
+    //         "125g egg free mayo",
+    //         "3/4 tsp salt plus extra",
+    //       ],
+    //       equipment: ["Large pan", "Large mixing bowl"],
 
-          imagerecipe: Food7,
+    //       imagerecipe: Food7,
 
-          video: "",
-          recipe: [],
-        },
-        {
-          name: "Vegan Salad",
-          labels: [],
-          ingredients: [
-            "900g new potatoes",
-            "2 celery sticks",
-            "1 red pepper",
-            "8 spring onions",
-            "8 small pickled gherkins",
-            "4 tbsp capers",
-            "1 lemon",
-            "10g fresh dill",
-            "10g fresh parsley",
-            "10g fresh mint",
-            "10g fresh coriander",
-            "125g egg free mayo",
-            "3/4 tsp salt plus extra",
-          ],
-          equipment: ["Large pan", "Large mixing bowl"],
+    //       video: "",
+    //       recipe: [],
+    //     },
+    //     {
+    //       name: "Vegan Salad",
+    //       labels: [],
+    //       ingredients: [
+    //         "900g new potatoes",
+    //         "2 celery sticks",
+    //         "1 red pepper",
+    //         "8 spring onions",
+    //         "8 small pickled gherkins",
+    //         "4 tbsp capers",
+    //         "1 lemon",
+    //         "10g fresh dill",
+    //         "10g fresh parsley",
+    //         "10g fresh mint",
+    //         "10g fresh coriander",
+    //         "125g egg free mayo",
+    //         "3/4 tsp salt plus extra",
+    //       ],
+    //       equipment: ["Large pan", "Large mixing bowl"],
 
-          imagerecipe: Food7,
+    //       imagerecipe: Food7,
 
-          video: "",
-          recipe: [],
-        },
-      ],
-    },
-    {
-      category: "Cereals",
-      image: Food6,
-      recepies: [
-        {
-          name: "Vegan Salad",
-          labels: [],
-          ingredients: [
-            "900g new potatoes",
-            "2 celery sticks",
-            "1 red pepper",
-            "8 spring onions",
-            "8 small pickled gherkins",
-            "4 tbsp capers",
-            "1 lemon",
-            "10g fresh dill",
-            "10g fresh parsley",
-            "10g fresh mint",
-            "10g fresh coriander",
-            "125g egg free mayo",
-            "3/4 tsp salt plus extra",
-          ],
-          equipment: ["Large pan", "Large mixing bowl"],
+    //       video: "",
+    //       recipe: [],
+    //     },
+    //   ],
+    // },
+    // {
+    //   category: "Cereals",
+    //   image: Food6,
+    //   recepies: [
+    //     {
+    //       name: "Vegan Salad",
+    //       labels: [],
+    //       ingredients: [
+    //         "900g new potatoes",
+    //         "2 celery sticks",
+    //         "1 red pepper",
+    //         "8 spring onions",
+    //         "8 small pickled gherkins",
+    //         "4 tbsp capers",
+    //         "1 lemon",
+    //         "10g fresh dill",
+    //         "10g fresh parsley",
+    //         "10g fresh mint",
+    //         "10g fresh coriander",
+    //         "125g egg free mayo",
+    //         "3/4 tsp salt plus extra",
+    //       ],
+    //       equipment: ["Large pan", "Large mixing bowl"],
 
-          imagerecipe: Food7,
+    //       imagerecipe: Food7,
 
-          video: "",
-          recipe: [],
-        },
-        {
-          name: "Vegan Salad",
-          labels: ["quesadilla"],
-          ingredients: [
-            "900g new potatoes",
-            "2 celery sticks",
-            "1 red pepper",
-            "8 spring onions",
-            "8 small pickled gherkins",
-            "4 tbsp capers",
-            "1 lemon",
-            "10g fresh dill",
-            "10g fresh parsley",
-            "10g fresh mint",
-            "10g fresh coriander",
-            "125g egg free mayo",
-            "3/4 tsp salt plus extra",
-          ],
-          equipment: ["Large pan", "Large mixing bowl"],
+    //       video: "",
+    //       recipe: [],
+    //     },
+    //     {
+    //       name: "Vegan Salad",
+    //       labels: ["quesadilla"],
+    //       ingredients: [
+    //         "900g new potatoes",
+    //         "2 celery sticks",
+    //         "1 red pepper",
+    //         "8 spring onions",
+    //         "8 small pickled gherkins",
+    //         "4 tbsp capers",
+    //         "1 lemon",
+    //         "10g fresh dill",
+    //         "10g fresh parsley",
+    //         "10g fresh mint",
+    //         "10g fresh coriander",
+    //         "125g egg free mayo",
+    //         "3/4 tsp salt plus extra",
+    //       ],
+    //       equipment: ["Large pan", "Large mixing bowl"],
 
-          imagerecipe: Food7,
+    //       imagerecipe: Food7,
 
-          video: "",
-          recipe: [],
-        },
-      ],
-    },
+    //       video: "",
+    //       recipe: [],
+    //     },
+      // ],
+    // },
   ]);
 
   return (
@@ -318,8 +320,8 @@ const Beginner = ({ navigation }: { navigation: any }) => {
               height: 164,
               width: 188,
               borderRadius: 10,
-              backgroundColor: "#5BBEB3",
-              borderColor: "#5BBEB3",
+              backgroundColor: "#FEAD62",
+              borderColor: "#FEAD62",
             }}
             onPress={() => navigation.navigate("FoodList", item)}
           >
@@ -331,7 +333,7 @@ const Beginner = ({ navigation }: { navigation: any }) => {
                 height: 126,
                 borderRadius: 10,
                 borderWidth: 2,
-                borderColor: "#5BBEB3",
+                borderColor: "#FEAD62",
                 borderBottomLeftRadius: 0,
                 borderBottomRightRadius: 0,
               }}
@@ -339,7 +341,7 @@ const Beginner = ({ navigation }: { navigation: any }) => {
             <Text
               style={{
                 color: "white",
-                alignSelf: "flex-start",
+                alignSelf: "center",
                 marginTop: 7,
               }}
             >

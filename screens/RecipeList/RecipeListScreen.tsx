@@ -85,7 +85,15 @@ const RecipeListScreen = ({
             backgroundColor: "#5BBEB3",
             marginBottom: 120,
           }}
-          onPress={() => navigation.navigate("CookingOptions", route.params)}
+
+          onPress={() => {
+            navigation.navigate('Both', {
+              title: route.optionName,
+              data: route.data,
+              dataTwo: route.dataTwo,
+              labels: route.labels,
+            });
+          }}
         >
           {/* Display the name of the category ons the top of the screen */}
           <Text

@@ -74,7 +74,7 @@ const RewardGainedScreen = ({ route, navigation }: {route:any, navigation:any })
           justifyContent: "center",
           marginTop: 30,
         }}
-        onPress={() => navigation.navigate("Beginner")}
+        onPress={() => navigation.navigate("Profile")}
       >
         {/* Display the name of the category ons the top of the screen */}
 

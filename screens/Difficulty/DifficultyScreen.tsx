@@ -12,6 +12,7 @@ const DifficultyScreen = ({ navigation }: { navigation: any }) => {
 
   // this screen includes all stack navigation buttons
   // this is the first screen a user sees
+  
 
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     marginTop: 60,
     marginBottom: -40,
     fontSize: 35,
+    color: '#FEAD62'
   },
   buttonstyles: {
     justifyContent: "center",
