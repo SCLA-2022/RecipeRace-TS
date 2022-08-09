@@ -69,9 +69,10 @@ export default DifficultyCard
 const styles = StyleSheet.create({
   textStyle: {
     color: 'white',
-    fontSize: 25,
+    fontSize: 20,
     marginTop: -20,
-    fontFamily: 'BubblePop'
+    fontFamily: 'BubblePop',
+   
 
   },
   touch: {

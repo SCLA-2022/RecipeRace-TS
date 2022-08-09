@@ -17,7 +17,7 @@ const RewardGainedScreen = ({ route, navigation }: { route: any, navigation: any
 
   setTimeout(() => {
     setChangeScreen(true)
-  }, 2000)
+  }, 3000)
   return (
     <>
       {changeScreen ? (
@@ -82,7 +82,7 @@ const RewardGainedScreen = ({ route, navigation }: { route: any, navigation: any
               height: 64,
               width: 231
             }}
-            onPress={() => navigation.navigate("Profile", route.params.image)}
+            onPress={() => navigation.navigate("Profile")}
           >
             {/* Display the name of the category ons the top of the screen */}
             <Text style = {{color: 'white', fontSize: 28, alignSelf: 'center', fontFamily: 'BubblePop'}}> Profile </Text>
