@@ -1,5 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SplashScreen from 'react-native-splash-screen'
+import React, { useEffect } from 'react'
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';

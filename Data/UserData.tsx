@@ -23,14 +23,14 @@ export const UserInformation = {
 
 }
 
-export const levels = [
+export let levels = [
     {
         label: 'Beginner',
-        xp: 62,
+        xp: 65,
     },
     {
         label: 'Intermediate',
-        xp: 100,
+        xp: 25,
     },
     {
         label: 'Advanced',
