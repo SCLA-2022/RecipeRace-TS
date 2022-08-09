@@ -15,7 +15,7 @@ import VideoCard from "../../components/Cards/VideoCard";
 
 const Beginner = ({ navigation }: { navigation: any }) => {
 
-  
+
   // FoodList IMAGES
 
   // quesadilla
@@ -60,7 +60,13 @@ const Beginner = ({ navigation }: { navigation: any }) => {
           imagerecipe: Food7,
 
           video: "",
-          recipe: [],
+          recipe: [
+            "Heat the tortillas until air pockets form",
+            "Add the cheese and other ingredients",
+            "Lower the heat and cover pan",
+            "Fold the tortilla over",
+            "Remove quesadilla from pan and cut into wedges"
+          ],
         },
         {
           name: "",
@@ -290,7 +296,7 @@ const Beginner = ({ navigation }: { navigation: any }) => {
     //       video: "",
     //       recipe: [],
     //     },
-      // ],
+    // ],
     // },
   ]);
 
@@ -300,11 +306,28 @@ const Beginner = ({ navigation }: { navigation: any }) => {
         data={categories}
         ListHeaderComponent={
           <>
+
+            <View style = {{flexDirection: 'row', marginTop: 50, justifyContent: 'space-between'}}>
+
+              <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={{  marginLeft: 8 }}>
+
+                <Image style={{ width: 32, height: 31 }} source={require('../../assets/goBack.png')} />
+              </TouchableOpacity>
+
+              <View style = {{flexDirection: 'row'}}>
+                <Image style = {{width: 44, height: 38}}  source={require('../../assets/Money.png')} />
+                <Text style = {{fontSize: 35}}> 10 </Text>
+              </View>
+            </View>
             <Text
               style={{
                 alignSelf: "center",
-                marginTop: 60,
+                marginTop: 23,
                 fontSize: 28,
+                marginBottom: 50,
+                fontFamily: 'BubblePop',
               }}
             >
               {" "}
@@ -329,13 +352,16 @@ const Beginner = ({ navigation }: { navigation: any }) => {
             <Image
               source={item.image}
               style={{
-                width: 188,
-                height: 126,
+                width: 175,
+                height: 115,
                 borderRadius: 10,
                 borderWidth: 2,
                 borderColor: "#FEAD62",
                 borderBottomLeftRadius: 0,
                 borderBottomRightRadius: 0,
+                marginTop: 6,
+                // marginLeft: 4
+                alignSelf: 'center'
               }}
             />
             <Text
@@ -343,6 +369,8 @@ const Beginner = ({ navigation }: { navigation: any }) => {
                 color: "white",
                 alignSelf: "center",
                 marginTop: 7,
+                fontFamily: 'BubblePop',
+                fontSize: 20
               }}
             >
               {" "}

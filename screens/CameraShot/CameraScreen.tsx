@@ -27,6 +27,7 @@ export default function CameraScreen({
 }) {
   // useRef() <- does not cause the page to keep refreshing
   let cameraRef = useRef<Camera>(null);
+  console.log(route.params.category)
 
   // const [photo, setPhoto] = useState({
   //     photo: null,
@@ -195,35 +196,69 @@ export default function CameraScreen({
         // send photo to server
         upload();
 
-        navigation.navigate("Reward");
+        navigation.navigate("Reward", 
+        { info: route.params,
+          image: photo.base64
+        });
       });
     };
 
     // show the user the button to transfer the photo
     return (
-      <SafeAreaView style={styles.container}>
-        <Image
-          style={{ width: 400, height: 500, marginBottom: 10 }}
-          source={{ uri: "data:image/jpg;base64," + photo.base64 }}
-        />
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
 
-        {/* <Button title="Share" onPress={sharePic} /> */}
+        <View style={{ height: 20, display: 'flex', justifyContent: 'center', marginTop: 20 }}>
 
-        {hasMediaLibraryPermission ? (
-          <Button title="Save" onPress={savePhoto} />
-        ) : undefined}
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{ marginLeft: 8, width: 32, height: 31, marginTop: 50 }}>
 
-        <Button title="Discard" onPress={() => setPhoto(undefined)} />
-      </SafeAreaView>
+            <Image style={{ width: 32, height: 31 }} source={require('../../assets/goBack.png')} />
+          </TouchableOpacity>
+
+        </View>
+
+        <SafeAreaView style={styles.container}>
+
+
+
+          <Image
+            style={{ width: 400, height: 500, marginBottom: 10 }}
+            source={{ uri: "data:image/jpg;base64," + photo.base64 }}
+          />
+
+          <TouchableOpacity onPress={() => savePhoto()}>
+            <Image style={{ height: 61, width: 234, marginTop: 100 }} source={require('../../assets/upload.png')} />
+          </TouchableOpacity>
+
+          {/* <Image style = {{width: 428, height: 242}} source={ require('../../assets/CameraOverlay.png') }/> */}
+        </SafeAreaView>
+      </View>
+
     );
   }
 
   // camera showing the option to take pic
   return (
     <>
+
+      <View style={{ height: 20, display: 'flex', justifyContent: 'center', marginTop: 20 }}>
+
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ marginLeft: 8, width: 32, height: 31, marginTop: 50 }}>
+
+          <Image style={{ width: 32, height: 31 }} source={require('../../assets/goBack.png')} />
+        </TouchableOpacity>
+
+      </View>
+
       {isFocused ? (
         <Camera style={styles.container} ref={cameraRef}>
           <View style={styles.buttonContainer}>
+
+
+          
             <TouchableOpacity onPress={takePic} style={styles.buttonTake}>
               <Text
                 style={{
@@ -254,20 +289,22 @@ export default function CameraScreen({
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 60,
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
   },
   buttonContainer: {
     backgroundColor: "#fff",
 
     justifyContent: "center",
-    marginTop: 500,
+    marginTop: 'auto',
 
     width: 100,
     height: 100,
     borderRadius: 100,
     borderWidth: 10,
+    marginBottom: 25,
   },
   preview: {
     alignSelf: "stretch",

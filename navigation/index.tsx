@@ -12,7 +12,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Text, StyleSheet } from "react-native";
+import { ColorSchemeName, Text, StyleSheet, Image } from "react-native";
 
 
 // ICONS IMPORTING LIBRARIES
@@ -46,15 +46,20 @@ export default function Navigation({
 }) {
   return (
     <NavigationContainer>
-      <Tabs.Navigator initialRouteName="Home"  >
+      <Tabs.Navigator 
+      initialRouteName="Home"
+      screenOptions={{
+        // tabBarStyle: {borderRadius: 40}
+          tabBarStyle: { borderTopLeftRadius: 10, borderTopRightRadius: 10, }
+      }}>
         <Tabs.Screen
-          options={{ headerShown: false, tabBarIcon: () => <MaterialIcons name="leaderboard" size={24} color="#FEAD62" />}}
+          options={{ headerShown: false, tabBarIcon: () => <Image style = {{width: 41, height: 35, alignSelf: 'center', marginTop:16}} source = {require('../assets/leaderBoardIcon.png')}/>, tabBarShowLabel: false}}
           name="Leaderboard"
           component={LeaderboardScreen}
           
         />
         <Tabs.Screen
-          options={{ headerShown: false, tabBarIcon: () => <MaterialCommunityIcons name="egg-fried" size={24} color="#FEAD62"  /> }} // hides 'Home' header
+          options={{ headerShown: false, tabBarIcon: () => <Image style = {{width: 41, height: 35, alignSelf: 'center', marginTop:16}} source = {require('../assets/homeIcon.png')}/>, tabBarShowLabel: false }} // hides 'Home' header
           name="Home"
           component={AllHomeTabStack}
           
@@ -62,7 +67,7 @@ export default function Navigation({
 
         <Tabs.Screen
           
-          options={{ headerShown: false, tabBarIcon: () => <Ionicons name="person-circle-sharp" size={24} color="#FEAD62" /> }}
+          options={{ headerShown: false, tabBarIcon: () => <Image  style = {{width: 35, height: 35, alignSelf: 'center', marginTop:16}} source = {require('../assets/profileIcon.png')}/>, tabBarShowLabel: false }}
           name="Profile"
           component={AllProfileStack}
         />

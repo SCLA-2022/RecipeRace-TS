@@ -32,7 +32,8 @@ const AllHomeTabStack = () => {
       <Stack.Screen options={{ headerShown: false }} name="Intermediate" component={Intermediate} />
       <Stack.Screen options={{ headerShown: false }} name="Advance" component={Advance} />
       <Stack.Screen
-        options={({ route }: {route:any}) => ({ title: route.params ? route.params.title: '' })}
+        // options={({ route }: {route:any}) => ({ title: route.params ? route.params.title: '' })}
+        options={{ headerShown: false }}
         name="FoodList"
         component={FoodListScreen}
       />
@@ -68,18 +69,30 @@ const AllHomeTabStack = () => {
         // options={({ route }) => ({ title: route.params.title })}
         name="Submit"
         component={CameraScreen}
+        options={({ navigation }: any) => ({
+          title: "Camera",
+          header: () => null,
+        })}
       />
       <Stack.Screen
         // options={({ route }) => ({ title: route.params.title })}
         name="Reward"
         component={RewardGainedScreen}
+        options={({ navigation }: any) => ({
+          title: "Reward",
+          header: () => null,
+        })}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         // options={({ route }) => ({ title: route.params.title })}
         name="Profile"
         component={AllProfileStack}
-      />
+        options={({ navigation }: any) => ({
+          title: "Reward",
+          header: () => null,
+        })}
+      /> */}
 
 
 
