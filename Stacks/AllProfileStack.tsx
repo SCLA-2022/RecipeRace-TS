@@ -11,13 +11,14 @@ import {
 import { UserInformation } from "../Data/UserData";
 
 import UploadProfilePictureScreen from "../screens/Profile/UploadProfilePictureScreen";
-import { useAppSelector } from "../store/hooks";
-import { getCoins } from "../store/slices/userSlice";
+// import { getCoins } from "../store/slices/userSlice";
 
 // redux into profile
 
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { appendMarker, appendReports, getCoin } from '../store/slices/coinslice';
+import { appendMarker, appendReports, getCoins
+
+} from '../store/slices/coinslice';
 
 
 const BADGES = UserInformation.achievements;
@@ -35,7 +36,7 @@ const AllProfileStack = ({ navigation }: any) => {
     //call store functipn to update the state
     let latLong = await Location.getCurrentPositionAsync({});
     dispatch(appendMarker({
-        id: markerList.length,
+        id: markerList.length,r
         lat: latLong.coords.latitude,
         long: latLong.coords.longitude,
         title: `ATM Skimmer`,
