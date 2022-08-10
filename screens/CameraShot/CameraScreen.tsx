@@ -12,7 +12,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Camera, CameraCapturedPicture } from "expo-camera";
 import { shareAsync } from "expo-sharing";
 import * as MediaLibrary from "expo-media-library";
-import axios from "axios";
 
 // fixing camera reloading issue
 import { useIsFocused } from "@react-navigation/native";
@@ -96,7 +95,10 @@ export default function CameraScreen({
           },
         };
 
-        const response = await fetch("https://reciperace.herokuapp.com/upload", payload);
+        const response = await fetch(
+          "https://reciperace.herokuapp.com/upload",
+          payload
+        );
 
         // grab data as object
         const labels = await response.json();
@@ -170,7 +172,6 @@ export default function CameraScreen({
     if (cameraRef && cameraRef.current) {
       // wait until picture is taken, then create a "new photo file"
       let newPhoto = await cameraRef.current.takePictureAsync(options);
-      console.log(newPhoto.uri);
       setPhoto(newPhoto);
     }
   };
@@ -187,40 +188,83 @@ export default function CameraScreen({
     let savePhoto = () => {
       MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
         setPhotoUri(photo.uri);
-        // console.log(photo)
         if (photoUri !== undefined) {
           setHasPhoto(true);
         }
         setPhoto(undefined);
         // send photo to server
-        upload();
+        //upload();
 
-        navigation.navigate("Difficulty");
+        navigation.navigate("Reward",
+        { info: route.params,
+          image: photo.base64
+        });
       });
     };
 
     // show the user the button to transfer the photo
     return (
-      <SafeAreaView style={styles.container}>
-        <Image
-          style={{ width: 400, height: 500, marginBottom: 10 }}
-          source={{ uri: "data:image/jpg;base64," + photo.base64 }}
-        />
+      <View style={{ flex: 1, backgroundColor: "white" }}>
+        <View
+          style={{
+            height: 20,
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 20,
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{ marginLeft: 8, width: 32, height: 31, marginTop: 50 }}
+          >
+            <Image
+              style={{ width: 32, height: 31 }}
+              source={require("../../assets/goBack.png")}
+            />
+          </TouchableOpacity>
+        </View>
 
-        {/* <Button title="Share" onPress={sharePic} /> */}
+        <SafeAreaView style={styles.container}>
+          <Image
+            style={{ width: 400, height: 500, marginBottom: 10 }}
+            source={{ uri: "data:image/jpg;base64," + photo.base64 }}
+          />
 
-        {hasMediaLibraryPermission ? (
-          <Button title="Save" onPress={savePhoto} />
-        ) : undefined}
+          <TouchableOpacity onPress={() => savePhoto()}>
+            <Image
+              style={{ height: 61, width: 234, marginTop: 100 }}
+              source={require("../../assets/upload.png")}
+            />
+          </TouchableOpacity>
 
-        <Button title="Discard" onPress={() => setPhoto(undefined)} />
-      </SafeAreaView>
+          {/* <Image style = {{width: 428, height: 242}} source={ require('../../assets/CameraOverlay.png') }/> */}
+        </SafeAreaView>
+      </View>
     );
   }
 
   // camera showing the option to take pic
   return (
     <>
+      <View
+        style={{
+          height: 20,
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 20,
+        }}
+      >
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ marginLeft: 8, width: 32, height: 31, marginTop: 50 }}
+        >
+          <Image
+            style={{ width: 32, height: 31 }}
+            source={require("../../assets/goBack.png")}
+          />
+        </TouchableOpacity>
+      </View>
+
       {isFocused ? (
         <Camera style={styles.container} ref={cameraRef}>
           <View style={styles.buttonContainer}>
@@ -254,20 +298,22 @@ export default function CameraScreen({
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 60,
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
   },
   buttonContainer: {
     backgroundColor: "#fff",
 
     justifyContent: "center",
-    marginTop: 500,
+    marginTop: "auto",
 
     width: 100,
     height: 100,
     borderRadius: 100,
     borderWidth: 10,
+    marginBottom: 25,
   },
   preview: {
     alignSelf: "stretch",

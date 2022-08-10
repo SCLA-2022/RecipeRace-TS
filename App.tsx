@@ -1,9 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import SplashScreen from "react-native-splash-screen";
+import React, { useEffect } from "react";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import useCachedResources from "./hooks/useCachedResources";
+import useColorScheme from "./hooks/useColorScheme";
+import Navigation from "./navigation";
+import { useFonts } from "expo-font";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -14,8 +19,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <Provider store={store}>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </Provider>
       </SafeAreaProvider>
     );
   }

@@ -7,13 +7,15 @@ import FoodListScreen from "../screens/FoodList/FoodListScreen";
 import DifficultyScreen from "../screens/Difficulty/DifficultyScreen";
 import Beginner from "../screens/Difficulty/Beginner";
 import Intermediate from "../screens/Difficulty/Intermediate";
-import Advance from "../screens/Difficulty/Advance";
+import Advance from "../screens/Difficulty/Advanced";
 import BothOptionsScreen from "../screens/CookingOptions/BothOptionsScreen";
 import RecipeTextScreen from "../screens/CookingOptions/RecipeTextScreen";
 
 import CookingOptionsScreen from "../screens/CookingOptions/CookingOptionsScreen";
 import VideoCard from "../components/Cards/VideoCard";
 import CameraScreen from "../screens/CameraShot/CameraScreen";
+import RewardGainedScreen from "../screens/Reward/RewardGainedScreen";
+import AllProfileStack from "./AllProfileStack";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,13 +26,26 @@ const Stack = createNativeStackNavigator();
 const AllHomeTabStack = () => {
   return (
     // HERE IS ALL THE "STACK TABS" for each part of the HOME TAB //
-    <Stack.Navigator >
-      <Stack.Screen  name="Difficulty" component={DifficultyScreen}  />
-      <Stack.Screen name="Beginner" component={Beginner} />
-      <Stack.Screen name="Intermediate" component={Intermediate} />
-      <Stack.Screen name="Advance" component={Advance} />
+    <Stack.Navigator>
       <Stack.Screen
-        options={({ route }: {route:any}) => ({ title: route.params ? route.params.title: '' })}
+        options={{ headerShown: false }}
+        name="Difficulty"
+        component={DifficultyScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Beginner"
+        component={Beginner}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Intermediate"
+        component={Intermediate}
+      />
+      {/*<Stack.Screen options={{ headerShown: false }} name="Advance" component={Advance} /> */}
+      <Stack.Screen
+        // options={({ route }: {route:any}) => ({ title: route.params ? route.params.title: '' })}
+        options={{ headerShown: false }}
         name="FoodList"
         component={FoodListScreen}
       />
@@ -63,15 +78,23 @@ const AllHomeTabStack = () => {
         component={RecipeTextScreen}
       />
       <Stack.Screen
-        // options={({ route }) => ({ title: route.params.title })}
         name="Submit"
         component={CameraScreen}
+        options={({ navigation }: any) => ({
+          title: "Camera",
+          header: () => null,
+        })}
+      />
+      <Stack.Screen
+        name="Reward"
+        component={RewardGainedScreen}
+        options={({ navigation }: any) => ({
+          title: "Reward",
+          header: () => null,
+        })}
       />
 
-
-      
     </Stack.Navigator>
-
   );
 };
 
