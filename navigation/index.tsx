@@ -50,7 +50,7 @@ export default function Navigation({
       initialRouteName="Home"
       screenOptions={{
         // tabBarStyle: {borderRadius: 40}
-          tabBarStyle: { borderTopLeftRadius: 10, borderTopRightRadius: 10, height: 80}
+          tabBarStyle: { borderTopLeftRadius: 10, borderTopRightRadius: 10, height: 50}
       }}>
         <Tabs.Screen
           options={{ headerShown: false, tabBarIcon: () => <Image style = {{width: 41, height: 35, alignSelf: 'center', marginTop:16}} source = {require('../assets/leaderBoardIcon.png')}/>, tabBarShowLabel: false}}
