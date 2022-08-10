@@ -112,7 +112,6 @@ top10Style: {
 
     welcome: {
       flex: 1,
-      margin: 20,
       backgroundColor: 'orange',
       margin: 10,
       textAlign: 'center',

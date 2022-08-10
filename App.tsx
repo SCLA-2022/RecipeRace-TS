@@ -10,6 +10,12 @@ import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
 import { useFonts } from "expo-font";
 
+// redux
+import { useAppDispatch, useAppSelector } from "./store/hooks";
+import {loadCoin, getCoin} from './store/slices/coinslice'
+
+
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
