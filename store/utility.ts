@@ -1,6 +1,6 @@
 export const updateStateObject = (
-    previousState,
-    updatedProperties
+    previousState:any,
+    updatedProperties:any
   ) => ({
     ...previousState,
     ...updatedProperties,

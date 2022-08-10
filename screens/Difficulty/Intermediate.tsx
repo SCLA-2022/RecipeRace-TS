@@ -2,105 +2,61 @@ import React from "react";
 import {
   Text,
   View,
-  TouchableHighlight,
   TouchableOpacity,
   FlatList,
   StyleSheet,
+  Image,
 } from "react-native";
-// import { FlatList } from 'react-native-web'
-// import { View } from 'react-native-web'
+import useBeginnerCategories from "../../hooks/useBeginnerCategories";
+import useRecipeList from "../../hooks/useBeginnerCategories";
 
 const Intermediate = ({ navigation }: { navigation: any }) => {
-  const [categories, setCategories] = React.useState([
-    {
-      category: "Carrot",
-      recepies: [
-        {
-          name: "Carrot Cake",
-          ingredients: [
-            "milk",
-            "carrot",
-            "sugar",
-            "spices",
-            "more carrots",
-            "plate",
-          ],
-        },
-        {
-          name: "something else",
-          ingredients: ["any", "something", "carrot"],
-        },
-      ],
-    },
-    {
-      category: "Apple",
-      recepies: [
-        {
-          name: "Apple Cake",
-          ingredients: [
-            "milk",
-            "apple",
-            "sugar",
-            "spices",
-            "more appple",
-            "plate",
-          ],
-        },
-        {
-          name: "something else",
-          ingredients: ["any", "something", "apple"],
-        },
-      ],
-    },
-    {
-      category: "huevos",
-      recepies: [
-        {
-          name: "Huevo Cake",
-          ingredients: [
-            "huevo",
-            "carrot",
-            "sugar",
-            "spices",
-            "more huevos",
-            "plate",
-          ],
-        },
-        {
-          name: "something else",
-          ingredients: ["any", "something", "huevo"],
-        },
-      ],
-    },
-    {
-      category: "bread",
-      recepies: [
-        {
-          name: "bread Cake",
-          ingredients: [
-            "milk",
-            "bread",
-            "sugar",
-            "spices",
-            "more bread",
-            "plate",
-          ],
-        },
-        {
-          name: "something else",
-          ingredients: ["any", "something", "bread"],
-        },
-      ],
-    },
-  ]);
+  // get categorie data
+  const { categories } = useBeginnerCategories();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <FlatList
         data={categories}
         ListHeaderComponent={
           <>
-            <Text style={{ alignSelf: "center" }}> Intermediate </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                marginTop: 50,
+                justifyContent: "space-between",
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={{ marginLeft: 8 }}
+              >
+                <Image
+                  style={{ width: 32, height: 31 }}
+                  source={require("../../assets/goBack.png")}
+                />
+              </TouchableOpacity>
+
+              <View style={{ flexDirection: "row" }}>
+                <Image
+                  style={{ width: 44, height: 38 }}
+                  source={require("../../assets/Money.png")}
+                />
+                <Text style={{ fontSize: 35 }}> 10 </Text>
+              </View>
+            </View>
+            <Text
+              style={{
+                alignSelf: "center",
+                marginTop: 23,
+                fontSize: 28,
+                marginBottom: 50,
+                fontFamily: "BubblePop",
+              }}
+            >
+              {" "}
+              Beginner{" "}
+            </Text>
           </>
         }
         columnWrapperStyle={styles.row}
@@ -108,15 +64,39 @@ const Intermediate = ({ navigation }: { navigation: any }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={{
-              backgroundColor: "grey",
-              height: 100,
-              width: 100,
-              borderRadius: 20,
+              height: 164,
+              width: 188,
+              borderRadius: 10,
+              backgroundColor: "#FEAD62",
+              borderColor: "#FEAD62",
             }}
             onPress={() => navigation.navigate("FoodList", item)}
           >
             {/* Display the name of the category ons the top of the screen */}
-            <Text style={{ color: "white", alignSelf: "center" }}>
+            <Image
+              source={item.image}
+              style={{
+                width: 175,
+                height: 115,
+                borderRadius: 10,
+                borderWidth: 2,
+                borderColor: "#FEAD62",
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+                marginTop: 6,
+                // marginLeft: 4
+                alignSelf: "center",
+              }}
+            />
+            <Text
+              style={{
+                color: "white",
+                alignSelf: "center",
+                marginTop: 7,
+                fontFamily: "BubblePop",
+                fontSize: 20,
+              }}
+            >
               {" "}
               {item.category}{" "}
             </Text>

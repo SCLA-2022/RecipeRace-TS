@@ -26,11 +26,23 @@ const Stack = createNativeStackNavigator();
 const AllHomeTabStack = () => {
   return (
     // HERE IS ALL THE "STACK TABS" for each part of the HOME TAB //
-    <Stack.Navigator >
-      <Stack.Screen options={{ headerShown: false }}  name="Difficulty" component={DifficultyScreen}  />
-      <Stack.Screen options={{ headerShown: false }} name="Beginner" component={Beginner} />
-      <Stack.Screen options={{ headerShown: false }} name="Intermediate" component={Intermediate} />
-      <Stack.Screen options={{ headerShown: false }} name="Advance" component={Advance} />
+    <Stack.Navigator>
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Difficulty"
+        component={DifficultyScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Beginner"
+        component={Beginner}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Intermediate"
+        component={Intermediate}
+      />
+      {/*<Stack.Screen options={{ headerShown: false }} name="Advance" component={Advance} /> */}
       <Stack.Screen
         // options={({ route }: {route:any}) => ({ title: route.params ? route.params.title: '' })}
         options={{ headerShown: false }}
@@ -66,7 +78,6 @@ const AllHomeTabStack = () => {
         component={RecipeTextScreen}
       />
       <Stack.Screen
-        // options={({ route }) => ({ title: route.params.title })}
         name="Submit"
         component={CameraScreen}
         options={({ navigation }: any) => ({
@@ -75,7 +86,6 @@ const AllHomeTabStack = () => {
         })}
       />
       <Stack.Screen
-        // options={({ route }) => ({ title: route.params.title })}
         name="Reward"
         component={RewardGainedScreen}
         options={({ navigation }: any) => ({
@@ -84,21 +94,7 @@ const AllHomeTabStack = () => {
         })}
       />
 
-      {/* <Stack.Screen
-        // options={({ route }) => ({ title: route.params.title })}
-        name="Profile"
-        component={AllProfileStack}
-        options={({ navigation }: any) => ({
-          title: "Reward",
-          header: () => null,
-        })}
-      /> */}
-
-
-
-      
     </Stack.Navigator>
-
   );
 };
 

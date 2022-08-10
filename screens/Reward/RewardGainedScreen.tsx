@@ -1,27 +1,46 @@
+import { StackActions, NavigationAction } from "@react-navigation/native";
 import React from "react";
 import { FlatList, Text, View, Image, TouchableOpacity } from "react-native";
+import useEffect from "react";
+import { useAppDispatch } from "../../store/hooks";
+import { addCoins } from "../../store/slices/userSlice";
 
-const RewardGainedScreen = ({ route, navigation }: { route: any, navigation: any }) => {
-  let image1 = require("../../assets/crispy-fried-egg-recipe.png");
-
-  console.log(route.params.image)
-
-  const [rewardGained, setRewardGained] = React.useState([
-    {
-      coin: 10,
-      message: "progress level up",
-    },
-  ]);
-
+const RewardGainedScreen = ({
+  route,
+  navigation,
+}: {
+  route: any;
+  navigation: any;
+}) => {
+  const [rewardGained, setRewardGained] = React.useState({
+    coin: 10,
+    message: "progress level up",
+  });
   const [changeScreen, setChangeScreen] = React.useState(false);
 
-  setTimeout(() => {
-    setChangeScreen(true)
-  }, 3000)
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    dispatch(addCoins(rewardGained.coin));
+
+    setTimeout(() => {
+      setChangeScreen(true);
+    }, 3000);
+  
+  }, []);
+
+
   return (
     <>
       {changeScreen ? (
-        <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "white",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <View>
             <Text
               style={{
@@ -29,7 +48,7 @@ const RewardGainedScreen = ({ route, navigation }: { route: any, navigation: any
                 marginTop: 60,
                 fontSize: 30,
                 marginBottom: 20,
-                fontFamily: 'BubblePop'
+                fontFamily: "BubblePop",
               }}
             >
               {route.params.info.category}
@@ -44,7 +63,7 @@ const RewardGainedScreen = ({ route, navigation }: { route: any, navigation: any
                 marginHorizontal: 25,
                 paddingBottom: 100,
                 borderRadius: 50,
-                width: 381
+                width: 381,
               }}
             >
               <Image
@@ -66,8 +85,25 @@ const RewardGainedScreen = ({ route, navigation }: { route: any, navigation: any
                   // marginLeft: 25,
                 }}
               >
-                <Text style={{ fontSize: 40, alignSelf: 'center', marginBottom: 35, fontFamily: 'BubblePop' }}>10 coins</Text>
-                <Text style={{ fontSize: 40, alignSelf: 'center', fontFamily: 'BubblePop' }}>Progress Level Up++</Text>
+                <Text
+                  style={{
+                    fontSize: 40,
+                    alignSelf: "center",
+                    marginBottom: 35,
+                    fontFamily: "BubblePop",
+                  }}
+                >
+                  10 coins
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 40,
+                    alignSelf: "center",
+                    fontFamily: "BubblePop",
+                  }}
+                >
+                  Progress Level Up++
+                </Text>
               </View>
             </View>
           </View>
@@ -80,26 +116,56 @@ const RewardGainedScreen = ({ route, navigation }: { route: any, navigation: any
               justifyContent: "center",
               marginTop: 30,
               height: 64,
-              width: 231
+              width: 231,
             }}
-            onPress={() => navigation.navigate("Profile")}
+            onPress={() => {
+              // const clear = StackActions.reset({
+              //   index: 0,
+              //   actions: [NavigationAction.navigate("Profile")],
+              // });
+              //
+              navigation.navigate("Profile");
+              navigation.reset({ index: 0, routes: [{ name: "Difficulty" }] });
+            }}
           >
             {/* Display the name of the category ons the top of the screen */}
-            <Text style = {{color: 'white', fontSize: 28, alignSelf: 'center', fontFamily: 'BubblePop'}}> Profile </Text>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 28,
+                alignSelf: "center",
+                fontFamily: "BubblePop",
+              }}
+            >
+              {" "}
+              Profile{" "}
+            </Text>
             {/* <Image style={{ height: 64, width: 231 }} source={require('../../assets/goHome.png')} /> */}
           </TouchableOpacity>
         </View>
-      ) :
-        <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+      ) : (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "white",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{ fontSize: 25, marginBottom: 124, fontFamily: "BubblePop" }}
+          >
+            {" "}
+            Final Dish Verified{" "}
+          </Text>
 
-          <Text style={{ fontSize: 25, marginBottom: 124, fontFamily: 'BubblePop' }}> Final Dish Verified </Text>
-
-          <Image style={{ height: 160, width: 209 }} source={require('../../assets/Verified.png')} />
-
+          <Image
+            style={{ height: 160, width: 209 }}
+            source={require("../../assets/Verified.png")}
+          />
         </View>
-      }
+      )}
     </>
-
   );
 };
 

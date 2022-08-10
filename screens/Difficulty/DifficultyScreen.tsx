@@ -13,13 +13,12 @@ const DifficultyScreen = ({ navigation }: { navigation: any }) => {
   // this screen includes all stack navigation buttons
   // this is the first screen a user sees
 
-
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <Text style={styles.newText}>Choose Cooking Level</Text>
 
       {levels.map((level) => {
-        if (level.label !== 'Advanced')
+        if (level.label !== "Advanced")
           return (
             <View style={styles.space} key={level.label}>
               <DifficultyCard
@@ -27,47 +26,23 @@ const DifficultyScreen = ({ navigation }: { navigation: any }) => {
                 navigation={navigation}
                 titleName={level.label}
                 xp={level.xp}
-                disable = {false}
+                disable={false}
               />
             </View>
-          ) 
-        
-          return (
-            <View style={styles.space} key={level.label}>
-              <DifficultyCard
-                style={styles.buttonstyles}
-                navigation={navigation}
-                titleName={level.label}
-                xp={level.xp}
-                disable = {true}
-              />
-            </View>
-          )
-      }
-        // <View style={styles.space} key={level.label}>
-        //   <DifficultyCard
-        //     style={styles.buttonstyles}
-        //     navigation={navigation}
-        //     titleName={level.label}
-        //     xp={level.xp}
-        //   />
-        // </View>
-      )}
+          );
 
-      {/* <View style={styles.space}>
-        <DifficultyCard
-          style={styles.buttonstyles}
-          navigation={navigation}
-          titleName="Intermediate"
-        />
-      </View>
-      <View style={styles.space}>
-        <DifficultyCard
-          style={styles.buttonstyles}
-          navigation={navigation}
-          titleName="Advance"
-        />
-      </View> */}
+        return (
+          <View style={styles.space} key={level.label}>
+            <DifficultyCard
+              style={styles.buttonstyles}
+              navigation={navigation}
+              titleName={level.label}
+              xp={level.xp}
+              disable={true}
+            />
+          </View>
+        );
+      })}
     </View>
   );
 };
@@ -80,8 +55,8 @@ const styles = StyleSheet.create({
     marginTop: 60,
     marginBottom: -40,
     fontSize: 35,
-    color: '#FEAD62',
-    fontFamily: 'BubblePop'
+    color: "#FEAD62",
+    fontFamily: "BubblePop",
   },
   buttonstyles: {
     justifyContent: "center",
@@ -96,7 +71,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   image: { width: 40, marginTop: -5 },
-  textStyle: { fontSize: 8, marginTop: -5, fontFamily: 'BubblePop' },
+  textStyle: { fontSize: 8, marginTop: -5, fontFamily: "BubblePop" },
 
   progressEdit: {
     alignSelf: "center",

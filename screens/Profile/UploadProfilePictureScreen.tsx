@@ -10,9 +10,9 @@ import * as ImagePicker from 'expo-image-picker';
 
 export default function UploadProfilePictureScreen({ route, navigation }: { route: any, navigation: any }) {
 
-  useEffect(() => {
-    checkForCameraRollPermission()
-  }, []);
+  // useEffect(() => {
+  //   checkForCameraRollPermission()
+  // }, []);
 
   const [image, setImage] = useState<null | string>(null);
 
@@ -42,17 +42,17 @@ export default function UploadProfilePictureScreen({ route, navigation }: { rout
     <View style={imageUploaderStyles.container}>
 
       {
-        image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+        <Image source={require('../../assets/players/Henry.jpeg')} style={{ width: 200, height: 200 }} />
       }
 
 
 
-      <View style={imageUploaderStyles.uploadBtnContainer}>
+      {/* <View style={imageUploaderStyles.uploadBtnContainer}>
         <TouchableOpacity onPress={addImage} style={imageUploaderStyles.uploadBtn} >
           <Text>{image ? 'Edit' : 'Upload'} Image</Text>
           <AntDesign name="camera" size={20} color="black" />
         </TouchableOpacity>
-      </View>
+      </View> */}
 
 
     </View>

@@ -1,38 +1,52 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, FlatList } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 
 import { UserInformation } from "../Data/UserData";
 
 import UploadProfilePictureScreen from "../screens/Profile/UploadProfilePictureScreen";
+import { useAppSelector } from "../store/hooks";
+import { getCoins } from "../store/slices/userSlice";
 
 const BADGES = UserInformation.achievements;
 const Badge = ({ image }: { image: any }) => (
-  <View >
+  <View>
     <Image source={image} />
   </View>
-)
-const AllProfileStack = ({navigation} : any) => {
-
+);
+const AllProfileStack = ({ navigation }: any) => {
+  const coins = useAppSelector(getCoins);
 
   return (
     <View>
-
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 50, padding: 10 }}>
-
-        <TouchableOpacity onPress={() => navigation.navigate('Leaderboard')}>
-          <Image style={{ width: 47, height: 48 }} source={require('../assets/LeaderBoard.png')} />
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginTop: 50,
+          padding: 10,
+        }}
+      >
+        <TouchableOpacity onPress={() => navigation.navigate("Leaderboard")}>
+          <Image
+            style={{ width: 47, height: 48 }}
+            source={require("../assets/LeaderBoard.png")}
+          />
         </TouchableOpacity>
 
-        {/* <View style={styles.alignThem}>
-        <UploadProfilePictureScreen />
-      </View> */}
-
-        <View style={{ flexDirection: 'row' }}>
-          <Image style={{ width: 44, height: 38 }} source={require('../assets/Money.png')} />
-          <Text style={{ fontSize: 35 }}> 10 </Text>
+        <View style={{ flexDirection: "row" }}>
+          <Image
+            style={{ width: 44, height: 38 }}
+            source={require("../assets/Money.png")}
+          />
+          <Text style={{ fontSize: 35 }}> {coins || '10'} </Text>
         </View>
-
       </View>
 
       <View style={styles.alignThem}>
@@ -40,15 +54,16 @@ const AllProfileStack = ({navigation} : any) => {
       </View>
 
       <View style={[styles.alignThem, { marginTop: 25, marginBottom: 33 }]}>
-        <Text style={{ fontSize: 35, fontFamily: 'BubblegumSans' }}>Achievements</Text>
+        <Text style={{ fontSize: 35, fontFamily: "BubblegumSans" }}>
+          Achievements
+        </Text>
       </View>
       {/* Achievements list */}
       {/* <View > */}
       <FlatList
-
         numColumns={3}
         columnWrapperStyle={{
-          justifyContent: 'space-evenly'
+          justifyContent: "space-evenly",
         }}
         data={BADGES}
         renderItem={({ item }) => (
@@ -73,7 +88,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   alignThem: {
-    alignSelf: 'center',
+    alignSelf: "center",
     alignItems: "center",
     // marginTop: 40,
   },

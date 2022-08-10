@@ -1,72 +1,15 @@
 import React from "react";
-import { ScrollView, Text, View, FlatList, Image } from "react-native";
+import { ScrollView, Text, View, FlatList, Image, TouchableOpacity } from "react-native";
 
 // import FirstPlaceCard from "../../Cards/FirstPlaceCard";
 
 import { useFaker } from "react-fakers";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import usePlayers from '../../hooks/usePlayers';
 
 const LeaderboardScreen = ({navigation} : any) => {
-  const { success, error, loading } = useFaker({
-    type: 'user',
-    params: { users: { quantity: 7 } }
-  });
 
-  console.log(success)
+  const {players} = usePlayers();
 
-
-  const [players, setPlayers] = React.useState([
-    {
-      firstName: "Logan",
-      lastName: "Cena",
-      exp: 1260,
-      image: "http://placeimg.com/640/480/people",
-      color: '#349D22',
-    },
-    {
-      firstName: "Henry",
-      lastName: "Martinez",
-      exp: 1110,
-      image: "http://placeimg.com/640/480/people",
-      color: '#FFE28B',
-    },
-    {
-      firstName: "Arnaldo",
-      lastName: "Hane",
-      exp: 1050,
-      image: "http://placeimg.com/640/480/people",
-      color: '#D30101',
-    },
-    {
-      firstName: "Hoyt",
-      lastName: "Johnson",
-      exp: 990,
-      image: "http://placeimg.com/640/480/people",
-      color: 'black',
-    },
-    {
-      firstName: "Kory",
-      lastName: "Botsford",
-      exp: 950,
-      image: "http://placeimg.com/640/480/people",
-      color: 'black',
-    },
-    {
-      firstName: "Ivy",
-      lastName: "Gerhold",
-      exp: 760,
-      image: "http://placeimg.com/640/480/people",
-      color: 'black',
-    },
-    {
-      firstName: "Moshe",
-      lastName: "Baumbach",
-      exp: 580,
-      image: "http://placeimg.com/640/480/people",
-      color: 'black',
-    },
-
-  ]);
 
   return (
     <>
@@ -138,7 +81,7 @@ const LeaderboardScreen = ({navigation} : any) => {
                 }}
               />
 
-              <Image style={{ height: 70, width: 70, marginTop: 39, marginLeft: 42, borderRadius: 200 }} source={{ uri: item.image }} />
+              <Image style={{ height: 70, width: 70, marginTop: 39, marginLeft: 42, borderRadius: 200 }} source={item.image } />
 
               <View style={{ marginTop: 39, marginLeft: 31 }}>
                 <Text style={{ fontSize: 25, fontFamily: 'BubblePop' }} >{item.firstName}</Text>
