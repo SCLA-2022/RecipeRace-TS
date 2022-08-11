@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { ScrollView, Text, View, FlatList, Image, TouchableOpacity } from "react-native";
 
 // import FirstPlaceCard from "../../Cards/FirstPlaceCard";
@@ -8,9 +8,13 @@ import usePlayers from '../../hooks/usePlayers';
 
 const LeaderboardScreen = ({navigation} : any) => {
 
-  const {players} = usePlayers();
+// navigation.navigate("Profile", item)
+  const [selectedItem, setSelectedItem] = useState({
 
+  });
+  
 
+  const { players } = usePlayers();
   return (
     <>
       <View style={{ marginTop: 60, flexDirection: 'row', alignItems: 'center'}}>
@@ -43,7 +47,7 @@ const LeaderboardScreen = ({navigation} : any) => {
         contentContainerStyle={{ alignItems: "center" }}
         numColumns={1}
         renderItem={({ item }) => (
-          <View
+          <TouchableOpacity
             style={{
               borderTopWidth: 1,
               borderBottomWidth: 1,
@@ -58,6 +62,7 @@ const LeaderboardScreen = ({navigation} : any) => {
 
 
             }}
+            onPress={() => {setSelectedItem(item);navigation.navigate("Profile", selectedItem)}}
           >
             <View
               style={{
@@ -90,7 +95,7 @@ const LeaderboardScreen = ({navigation} : any) => {
                 <Text style={{ fontSize: 25, fontFamily: 'BubblePop' }}>{item.exp} XP</Text>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </>
