@@ -17,12 +17,12 @@ import { getCoins } from "../store/slices/userSlice";
 const BADGES = UserInformation.achievements;
 const Badge = ({ image }: { image: any }) => (
   <View>
-    <Image source={image} />
+    <Image  source={image} />
   </View>
 );
-const AllProfileStack = ({ navigation }: any) => {
+const AllProfileStack = ({ navigation }: any, {route}: any) => {
   const coins = useAppSelector(getCoins);
-
+  console.log(route.params)
   return (
     <View>
       <View
@@ -54,7 +54,7 @@ const AllProfileStack = ({ navigation }: any) => {
       </View>
 
       <View style={[styles.alignThem, { marginTop: 25, marginBottom: 33 }]}>
-        <Text style={{ fontSize: 35, fontFamily: "BubblegumSans" }}>
+        <Text style={{ fontSize: 35, fontFamily: "BubblePop", }}>
           Achievements
         </Text>
       </View>
@@ -68,7 +68,7 @@ const AllProfileStack = ({ navigation }: any) => {
         data={BADGES}
         renderItem={({ item }) => (
           <View key={item.id}>
-            <Image source={item.image} />
+            <Image style={{width: 150, height: 150}} source={item.image} />
           </View>
         )}
       />
