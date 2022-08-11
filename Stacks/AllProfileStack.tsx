@@ -13,6 +13,9 @@ import { UserInformation } from "../Data/UserData";
 import UploadProfilePictureScreen from "../screens/Profile/UploadProfilePictureScreen";
 import { useAppSelector } from "../store/hooks";
 import { getCoins } from "../store/slices/userSlice";
+// import { getCoins } from "../store/slices/userSlice";
+
+// redux into profile
 
 const BADGES = UserInformation.achievements;
 const Badge = ({ image }: { image: any }) => (
@@ -22,7 +25,7 @@ const Badge = ({ image }: { image: any }) => (
 );
 const AllProfileStack = ({ navigation }: any, {route}: any) => {
   const coins = useAppSelector(getCoins);
-  console.log(route.params)
+
   return (
     <View>
       <View

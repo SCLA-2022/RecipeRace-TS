@@ -69,7 +69,7 @@ export default DifficultyCard
 const styles = StyleSheet.create({
   textStyle: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 25,
     marginTop: -20,
     fontFamily: 'BubblePop',
    

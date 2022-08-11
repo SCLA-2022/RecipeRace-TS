@@ -10,6 +10,8 @@ import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
 import { useFonts } from "expo-font";
 
+
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   newText: {
     textAlign: "center",
     marginTop: 60,
-    marginBottom: -40,
+    marginBottom: -50,
     fontSize: 35,
     color: "#FEAD62",
     fontFamily: "BubblePop",
