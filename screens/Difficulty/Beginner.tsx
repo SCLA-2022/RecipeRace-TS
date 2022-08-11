@@ -50,9 +50,9 @@ const Beginner = ({ navigation }: { navigation: any }) => {
             <Text
               style={{
                 alignSelf: "center",
-                marginTop: 23,
-                fontSize: 28,
-                marginBottom: 50,
+                marginTop: 20,
+                fontSize: 50,
+                marginBottom: 20,
                 fontFamily: "BubblePop",
               }}
             >

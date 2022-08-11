@@ -7,7 +7,7 @@ let Food1 = require("../assets/RegularQ.png");
 let Food2 = require("../assets/VeganQ.png");
 
 // egg
-let Food3 = require("../assets/RegularEgg.png");
+let Food3 = require("../assets/Egg.jpg");
 let Food4 = require("../assets/VeganEgg.png");
 
 // spagetti
@@ -19,7 +19,17 @@ let Food7 = require("../assets/RegularSalad.jpeg");
 let Food8 = require("../assets/VeganSalad.png");
 
 // rice
-let Food9 = require("../assets/VeganFriedRice.png");
+let Food9 = require("../assets/Rice.jpg");
+let Food10 = require("../assets/VeganFriedRice.png");
+
+// chicken
+let Food11 = require("../assets/Chicken.jpg");
+
+// soup
+let Food12 = require("../assets/Soup.jpg");
+
+// chili
+let Food13 = require("../assets/Chili.jpg");
 
 // ADDING FOOD IMAGES FOR CATEGORIES
 // let Food7 = require('../../assets/Oaxaca-M-Q.png');
@@ -68,34 +78,6 @@ export default function useBeginnerCategories() {
     },
     {
       category: "Egg",
-      image: Food2,
-      recipies: [
-        {
-          name: "",
-          labels: [],
-
-          ingredients: ["any", "something", "carrot"],
-          equipment: [],
-          imagerecipe: Food7,
-
-          video: "",
-          recipe: [],
-        },
-        {
-          name: "",
-          labels: [],
-
-          ingredients: ["any", "something", "carrot"],
-          equipment: [],
-          imagerecipe: Food7,
-
-          video: "",
-          recipe: [],
-        },
-      ],
-    },
-    {
-      category: "Spagetti",
       image: Food3,
       recipies: [
         {
@@ -123,8 +105,36 @@ export default function useBeginnerCategories() {
       ],
     },
     {
+      category: "Spagetti",
+      image: Food5,
+      recipies: [
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+      ],
+    },
+    {
       category: "Salad",
-      image: Food6,
+      image: Food7,
       recipies: [
         {
           name: "Regular Salad",
@@ -164,6 +174,118 @@ export default function useBeginnerCategories() {
           ],
           equipment: ["Large pan", "Large mixing bowl"],
 
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+      ],
+    },
+    {
+      category: "Rice",
+      image: Food9,
+      recipies: [
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+      ],
+    },
+    {
+      category: "Chicken",
+      image: Food11,
+      recipies: [
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+      ],
+    },
+    {
+      category: "Soup",
+      image: Food12,
+      recipies: [
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+      ],
+    },
+    {
+      category: "Chili",
+      image: Food13,
+      recipies: [
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
+          imagerecipe: Food7,
+
+          video: "",
+          recipe: [],
+        },
+        {
+          name: "",
+          labels: [],
+
+          ingredients: ["any", "something", "carrot"],
+          equipment: [],
           imagerecipe: Food7,
 
           video: "",

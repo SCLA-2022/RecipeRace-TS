@@ -26,7 +26,7 @@ const LeaderboardScreen = ({navigation} : any) => {
               // marginTop: 20,
               alignSelf: "center",
               // marginBottom: 50,
-              fontSize: 40,
+              fontSize: 50,
               fontFamily: 'BubblePop'
 
             }}
@@ -39,7 +39,7 @@ const LeaderboardScreen = ({navigation} : any) => {
       <FlatList
         nestedScrollEnabled={true}
         data={players}
-        style={{ marginTop: 50 }}
+        style={{ marginTop: 28, }}
         contentContainerStyle={{ alignItems: "center" }}
         numColumns={1}
         renderItem={({ item }) => (
@@ -48,12 +48,14 @@ const LeaderboardScreen = ({navigation} : any) => {
               borderTopWidth: 1,
               borderBottomWidth: 1,
               borderRightWidth: 1,
-              borderColor: item.color,
+              borderColor: "#FEAD62",
               // alignItems: 'center',
-              width: 397,
+              width: 360,
               height: 145,
               marginBottom: 13,
               borderRadius: 20,
+              
+
 
             }}
           >
@@ -68,13 +70,13 @@ const LeaderboardScreen = ({navigation} : any) => {
               <View
                 style={{
                   width: 15,
-                  backgroundColor: item.color,
+                  backgroundColor: "#FEAD62",
                   // borderRightWidth: 1,
                   // alignItems: 'center',
                   // display: 'flex',
                   // alignItems: 'center',
                   borderWidth: 1,
-                  borderColor: item.color,
+                  borderColor: "#FEAD62",
                   height: "100%",
                   borderTopLeftRadius: 20,
                   borderBottomLeftRadius: 20,
