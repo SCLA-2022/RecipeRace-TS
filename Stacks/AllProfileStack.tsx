@@ -11,15 +11,11 @@ import {
 import { UserInformation } from "../Data/UserData";
 
 import UploadProfilePictureScreen from "../screens/Profile/UploadProfilePictureScreen";
+import { useAppSelector } from "../store/hooks";
+import { getCoins } from "../store/slices/userSlice";
 // import { getCoins } from "../store/slices/userSlice";
 
 // redux into profile
-
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { appendMarker, appendReports, getCoins
-
-} from '../store/slices/coinslice';
-
 
 const BADGES = UserInformation.achievements;
 const Badge = ({ image }: { image: any }) => (
@@ -29,33 +25,6 @@ const Badge = ({ image }: { image: any }) => (
 );
 const AllProfileStack = ({ navigation }: any) => {
   const coins = useAppSelector(getCoins);
-
-
-  // redux
-  const getValue = async () => {
-    //call store functipn to update the state
-    let latLong = await Location.getCurrentPositionAsync({});
-    dispatch(appendMarker({
-        id: markerList.length,r
-        lat: latLong.coords.latitude,
-        long: latLong.coords.longitude,
-        title: `ATM Skimmer`,
-        description: `${location} | ${description}`,
-        image: require('../assets/Group236.png'),
-    }))
-    dispatch(appendReports({
-        id: reportList.length,
-        data: null, // null because no pumps at atm
-        address: location,
-        date: `${new Date()}`,
-        description: description,
-        type: 'atm'
-        // description: 'Skimmer made me go broke'
-    }))
-    setVisible(false)
-    console.log(location, description)
-    navigation.navigate('Map')
-}
 
 
   return (
