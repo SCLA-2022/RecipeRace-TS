@@ -3,7 +3,7 @@ import React from "react";
 import { FlatList, Text, View, Image, TouchableOpacity } from "react-native";
 import useEffect from "react";
 import { useAppDispatch } from "../../store/hooks";
-import { addCoins } from "../../store/slices/userSlice";
+import { addBadge, addCoins, addExp } from "../../store/slices/userSlice";
 
 const RewardGainedScreen = ({
   route,
@@ -22,13 +22,13 @@ const RewardGainedScreen = ({
 
   React.useEffect(() => {
     dispatch(addCoins(rewardGained.coin));
+    dispatch(addExp(rewardGained.coin * 10));
+    dispatch(addBadge(require('../../assets/badges/firstBadge.png')))
 
     setTimeout(() => {
       setChangeScreen(true);
     }, 3000);
-  
   }, []);
-
 
   return (
     <>

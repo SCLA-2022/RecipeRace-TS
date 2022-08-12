@@ -2,8 +2,6 @@ import React from 'react'
 import { Button, View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native'
 import CircularProgress, { CircularProgressWithChild } from 'react-native-circular-progress-indicator';
 
-import { UserInformation } from '../../Data/UserData';
-
 // This is the functionality of the buttons 
 // Difficulty button (function) -> passed to Difficulty.js
 

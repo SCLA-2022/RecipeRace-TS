@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image, View, Platform, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { Image, View, Platform, TouchableOpacity, Text, StyleSheet, ImageSourcePropType } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 // import User(s)
@@ -8,7 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 import * as ImagePicker from 'expo-image-picker';
 
-export default function UploadProfilePictureScreen({ route, navigation }: { route: any, navigation: any }) {
+export default function UploadProfilePictureScreen({ route, navigation, imageSource }: { route: any, navigation: any, imageSource: ImageSourcePropType}) {
 
   // useEffect(() => {
   //   checkForCameraRollPermission()
@@ -42,7 +42,7 @@ export default function UploadProfilePictureScreen({ route, navigation }: { rout
     <View style={imageUploaderStyles.container}>
 
       {
-        <Image source={require('../../assets/players/Henry.jpeg')} style={{ width: 200, height: 200 }} />
+        <Image source={imageSource} style={{ width: 200, height: 200 }} />
       }
 
 

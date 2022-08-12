@@ -41,7 +41,15 @@ export default function useCachedResources() {
           require("../assets/players/Ivy.jpeg"),
           require("../assets/players/Kory.jpeg"),
           require("../assets/players/logan.jpeg"),
-          require("../assets/players/Moshe.jpeg")
+          require("../assets/players/Moshe.jpeg"),
+          require("../assets/players/chef.png"),
+          require("../assets/players/armando.png"),
+          require("../assets/badges/firstBadge.png"),
+          require("../assets/badges/secondBadge.png"),
+          require("../assets/badges/thirdBadge.png"),
+          require("../assets/badges/fourthBadge.png"),
+          require("../assets/badges/fifthBadge.png"),
+          require("../assets/badges/sixthBadge.png"),
         ]);
 
         // Load fonts

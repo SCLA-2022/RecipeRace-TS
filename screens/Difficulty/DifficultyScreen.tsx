@@ -1,43 +1,50 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
-
-import CircularProgress, {
-  CircularProgressWithChild,
-} from "react-native-circular-progress-indicator";
-import { UserInformation, levels } from "../../Data/UserData";
 import DifficultyCard from "../../components/Cards/DifficultyCard";
+import { useAppSelector } from "../../store/hooks";
+import { getUser } from "../../store/slices/userSlice";
 
+const labels = ["Beginner", "Intermediate", "Advanced"];
 const DifficultyScreen = ({ navigation }: { navigation: any }) => {
-  const [value, setValue] = useState(0);
-
-  // this screen includes all stack navigation buttons
-  // this is the first screen a user sees
+  const user = useAppSelector(getUser);
 
   return (
     <View style={{ backgroundColor: "white", flex: 1 }}>
       <Text style={styles.newText}>Choose Cooking Level</Text>
 
-      {levels.map((level) => {
-        if (level.label !== "Advanced")
+      {labels.map((label) => {
+        if (label === "Beginner")
           return (
-            <View style={styles.space} key={level.label}>
+            <View style={styles.space} key={label}>
               <DifficultyCard
                 style={styles.buttonstyles}
                 navigation={navigation}
-                titleName={level.label}
-                xp={level.xp}
+                titleName={label}
+                xp={user?.beginnerXp}
+                disable={false}
+              />
+            </View>
+          );
+        if (label == "Intermediate")
+          return (
+            <View style={styles.space} key={label}>
+              <DifficultyCard
+                style={styles.buttonstyles}
+                navigation={navigation}
+                titleName={label}
+                xp={user?.intermediate}
                 disable={false}
               />
             </View>
           );
 
         return (
-          <View style={styles.space} key={level.label}>
+          <View style={styles.space} key={label}>
             <DifficultyCard
               style={styles.buttonstyles}
               navigation={navigation}
-              titleName={level.label}
-              xp={level.xp}
+              titleName={label}
+              xp={user?.advanced}
               disable={true}
             />
           </View>
